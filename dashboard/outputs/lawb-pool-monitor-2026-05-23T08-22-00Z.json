@@ -1,0 +1,192 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🎣 LAWB Pool Monitor"
+      },
+      "children": [
+        "main-stack"
+      ]
+    },
+    "main-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "lg"
+      },
+      "children": [
+        "pool-section",
+        "sep1",
+        "activity-section",
+        "sep2",
+        "alerts-section",
+        "sep3",
+        "links-section"
+      ]
+    },
+    "pool-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "pool-heading",
+        "pool-grid"
+      ]
+    },
+    "pool-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Pool Stats",
+        "level": "h3"
+      }
+    },
+    "pool-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-pool",
+        "stat-shopvault",
+        "stat-burn",
+        "stat-paused"
+      ]
+    },
+    "stat-pool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "100.62M LAWB (first run — no Δ baseline yet)"
+      }
+    },
+    "stat-shopvault": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19.00M LAWB"
+      }
+    },
+    "stat-burn": {
+      "type": "Stat",
+      "props": {
+        "label": "Burn (24h)",
+        "value": "insufficient data (first run)"
+      }
+    },
+    "stat-paused": {
+      "type": "Stat",
+      "props": {
+        "label": "Paused",
+        "value": "false"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "activity-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "activity-heading",
+        "activity-list"
+      ]
+    },
+    "activity-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Last 1h Activity",
+        "level": "h3"
+      }
+    },
+    "activity-list": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "activity-item-1",
+        "activity-item-2"
+      ]
+    },
+    "activity-item-1": {
+      "type": "Text",
+      "props": {
+        "text": "• 0 Redeemed events in last ~1h window (blocks 46365655 → 46367455)"
+      }
+    },
+    "activity-item-2": {
+      "type": "Text",
+      "props": {
+        "text": "• Wider 5h window shows contract is active (other event types) — pool is just not draining right now"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alerts-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alerts-heading",
+        "alert-item"
+      ]
+    },
+    "alerts-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Alerts",
+        "level": "h3"
+      }
+    },
+    "alert-item": {
+      "type": "Alert",
+      "props": {
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "shopVault holds 19.00M LAWB. Should stay 0 after the buy()-routes-to-prizePool upgrade (planned 2026-05-23). Either the upgrade has not deployed yet, or routing regressed.",
+        "type": "warning"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "links-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "link-basescan"
+      ]
+    },
+    "link-basescan": {
+      "type": "Link",
+      "props": {
+        "label": "BaseScan: Contract Events",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      }
+    }
+  }
+}

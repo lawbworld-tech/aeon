@@ -5,3 +5,6 @@ Could you check the skill name? You may be thinking of one of these similar skil
 - `defi-overview`
 
 Or if `lawb-pool-monitor` is a new skill you'd like to create, I can scaffold it for you.
+The skill `skills/lawb-pool-monitor/SKILL.md` does not exist in this repository. I cannot execute it.
+
+A quick search for `lawb` or `pool` in the `skills/` directory returns no matches. If you can confirm the correct skill name or path, I can run it.

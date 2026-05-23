@@ -1,0 +1,1 @@
+🟡 Heartbeat WATCH — lawb-pool-monitor last success 2026-05-23 12:09Z; 3h41m gap on hourly schedule (missed 13–15Z slots). Heartbeat self-entry missing from cron-state.json. No failures, no stuck dispatches, no PRs, no open issues.

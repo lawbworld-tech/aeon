@@ -1,0 +1,165 @@
+{
+  "root": "card_heartbeat",
+  "state": {},
+  "elements": {
+    "card_heartbeat": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat"
+      },
+      "children": [
+        "header_stack",
+        "main_content"
+      ]
+    },
+    "header_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "watch_badge",
+        "skill_label"
+      ]
+    },
+    "watch_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "WATCH",
+        "variant": "destructive"
+      }
+    },
+    "skill_label": {
+      "type": "Text",
+      "props": {
+        "text": "lawb-pool-monitor",
+        "variant": "lead"
+      }
+    },
+    "main_content": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "last_success_stat",
+        "time_gap_info",
+        "separator1",
+        "config_alert",
+        "separator2",
+        "health_status"
+      ]
+    },
+    "last_success_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Last success",
+        "value": "2026-05-23 12:09Z"
+      }
+    },
+    "time_gap_info": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "time_gap_label",
+        "time_gap_value",
+        "missed_slots"
+      ]
+    },
+    "time_gap_label": {
+      "type": "Text",
+      "props": {
+        "text": "Time gap on hourly schedule",
+        "variant": "muted"
+      }
+    },
+    "time_gap_value": {
+      "type": "Text",
+      "props": {
+        "text": "3h41m",
+        "variant": "lead"
+      }
+    },
+    "missed_slots": {
+      "type": "Text",
+      "props": {
+        "text": "missed 13–15Z slots",
+        "variant": "caption"
+      }
+    },
+    "separator1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "config_alert": {
+      "type": "Alert",
+      "props": {
+        "title": "Configuration issue",
+        "message": "Heartbeat self-entry missing from cron-state.json",
+        "type": "warning"
+      }
+    },
+    "separator2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "health_status": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "health_heading",
+        "no_failures_badge",
+        "no_stuck_badge",
+        "no_prs_badge",
+        "no_issues_badge"
+      ]
+    },
+    "health_heading": {
+      "type": "Text",
+      "props": {
+        "text": "Health status",
+        "variant": "muted"
+      }
+    },
+    "no_failures_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "No failures",
+        "variant": "secondary"
+      }
+    },
+    "no_stuck_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "No stuck dispatches",
+        "variant": "secondary"
+      }
+    },
+    "no_prs_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "No PRs",
+        "variant": "secondary"
+      }
+    },
+    "no_issues_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "No open issues",
+        "variant": "secondary"
+      }
+    }
+  }
+}

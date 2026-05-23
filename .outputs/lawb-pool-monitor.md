@@ -1,16 +1,23 @@
-🎣 LAWB Pool Monitor
+## Summary
 
-Pool: 100.62M LAWB
-ShopVault: 19.00M LAWB
-Paused: false
-Burn (24h): insufficient data (first run)
+**POOL_MONITOR_SUPPRESSED** — `shop_vault_nonzero` still tripped, on cooldown until 14:43:21Z. No notification sent.
 
-Last 1h activity:
-• 0 Redeemed events in last 1800 blocks (~1h)
-• block 46366399 → 46368199
+**Snapshot (block 46374344, 2026-05-23T12:07:56Z):**
+- Pool: **101.085M LAWB** (+0.465M since 08:43Z — pool growing)
+- ShopVault: **19.00M LAWB** (unchanged — anomaly persists)
+- Paused: false
+- Burn 24h: **−3.28M/24h** (net inflow from buy() exceeded redeem outflow over 3.4h window)
 
-Alerts:
-⚠️ SHOP_VAULT_NONZERO — shopVault holds 19.00M LAWB but the post-2026-05-23 upgrade expects it to drain to prizePool. Either the migration has not yet been performed, or buy() revenue is still routing into shopVault instead of prizePool. Worth inspecting setItem state and verifying the buy() implementation on the live proxy.
+**Activity (6145 blocks, ~3.4h):**
+- 1 Redeemed event, 35K LAWB out
+- Top/only: `0xd15c4be6…a769` at block 46373827
 
-Contract: 0x48b2db9E89542Baa217bf8dc6269164b7887fE57 (Base 8453)
-https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events
+**Alert evaluation:**
+- `paused` clear | `low_pool` (>10M) clear | `critical_low_pool` (>1M) clear | `high_burn` clear (burn negative)
+- `shop_vault_nonzero` triggered but suppressed (cooldown ends 14:43:21Z)
+
+**Files modified:**
+- `memory/lawb-pool-monitor-state.json` — last_block 46368199→46374344, last_pool 100.62M→101.085M, burn_window grew to 2 samples
+- `memory/logs/2026-05-23.md` — appended 12:07Z run entry
+
+**Follow-up:** shopVault has not drained in 3.4h. Worth investigating whether the post-upgrade sweep ran. SKILL.md example-block selectors still don't match the verified table (noted in earlier log) — separate PR.

@@ -1,16 +1,17 @@
 {
-  "last_block": 46374344,
-  "last_pool_wei": "101085000000000000000000000",
-  "last_run": "2026-05-23T12:07:56Z",
+  "last_block": 46381047,
+  "last_pool_wei": "103032500000000000000000000",
+  "last_run": "2026-05-23T15:50:43Z",
   "alerted_conditions": {
     "paused": null,
-    "shop_vault_nonzero": "2026-05-23T08:43:21Z",
+    "shop_vault_nonzero": "2026-05-23T15:50:43Z",
     "low_pool": null,
     "critical_low_pool": null,
     "high_burn": null
   },
   "burn_window_24h": [
     { "ts": "2026-05-23T08:43:21Z", "pool_wei": "100620000000000000000000000" },
-    { "ts": "2026-05-23T12:07:56Z", "pool_wei": "101085000000000000000000000" }
+    { "ts": "2026-05-23T12:07:56Z", "pool_wei": "101085000000000000000000000" },
+    { "ts": "2026-05-23T15:50:43Z", "pool_wei": "103032500000000000000000000" }
   ]
 }

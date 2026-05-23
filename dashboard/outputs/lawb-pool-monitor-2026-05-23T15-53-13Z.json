@@ -1,0 +1,141 @@
+{
+  "root": "card_main",
+  "state": {},
+  "elements": {
+    "card_main": {
+      "type": "Card",
+      "props": {
+        "title": "LAWB Pool Monitor"
+      },
+      "children": [
+        "stack_metrics",
+        "sep1",
+        "stack_activity",
+        "sep2",
+        "stack_alerts",
+        "sep3",
+        "link_basescan"
+      ]
+    },
+    "stack_metrics": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "stat_pool",
+        "stat_shopvault",
+        "stat_paused",
+        "stat_burn"
+      ]
+    },
+    "stat_pool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "103.03M LAWB",
+        "delta": "+1.95M",
+        "trend": "up"
+      }
+    },
+    "stat_shopvault": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19.00M LAWB",
+        "delta": "expected: 0"
+      }
+    },
+    "stat_paused": {
+      "type": "Stat",
+      "props": {
+        "label": "Paused",
+        "value": "false"
+      }
+    },
+    "stat_burn": {
+      "type": "Stat",
+      "props": {
+        "label": "Burn (24h)",
+        "value": "-8.1M LAWB",
+        "delta": "pool growing, buy() inflow exceeds redeems",
+        "trend": "down"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stack_activity": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading_activity",
+        "text_redeems",
+        "text_top_wallet"
+      ]
+    },
+    "heading_activity": {
+      "type": "Heading",
+      "props": {
+        "text": "Last 3.7h activity",
+        "level": "h3"
+      }
+    },
+    "text_redeems": {
+      "type": "Text",
+      "props": {
+        "text": "2 redeems · 52.5K LAWB out · 2 unique wallets"
+      }
+    },
+    "text_top_wallet": {
+      "type": "Text",
+      "props": {
+        "text": "Top: 0xd15c4be6…a769 redeemed 27.5K LAWB"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stack_alerts": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alert_shopvault"
+      ]
+    },
+    "alert_shopvault": {
+      "type": "Alert",
+      "props": {
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "shopVault holds 19M LAWB; should be 0 post-2026-05-23 upgrade. Unchanged since first alert at 08:43Z. Likely the migration sweep missed these funds; operator should investigate manual drain or fix routing.",
+        "type": "warning"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "link_basescan": {
+      "type": "Link",
+      "props": {
+        "label": "View on Basescan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      }
+    }
+  }
+}

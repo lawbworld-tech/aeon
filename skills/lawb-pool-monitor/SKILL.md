@@ -1,5 +1,5 @@
 ---
-name: LAWB Pool Monitor
+name: lawb-pool-monitor
 description: Watch LawbFishing prize pool health on Base mainnet — alert on rapid drain, depletion, or accounting anomalies
 var: ""
 tags: [crypto, lawbworld]

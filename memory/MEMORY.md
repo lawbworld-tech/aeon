@@ -7,6 +7,7 @@
 ## Recent Articles
 | Date | Title | Topic |
 |------|-------|-------|
+| 2026-05-23 | X at the Crossroads: A Payments Push and a Regulator's Rebuke | X platform — X Money beta + Australia eSafety fine |
 
 ## Recent Digests
 | Date | Type | Key Topics |

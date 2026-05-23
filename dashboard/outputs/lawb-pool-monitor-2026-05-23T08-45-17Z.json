@@ -1,0 +1,181 @@
+{
+  "root": "card-main",
+  "state": {},
+  "elements": {
+    "card-main": {
+      "type": "Card",
+      "props": {
+        "title": "🎣 LAWB Pool Monitor"
+      },
+      "children": [
+        "metrics-grid",
+        "separator-1",
+        "activity-section",
+        "separator-2",
+        "alerts-section",
+        "separator-3",
+        "contract-section"
+      ]
+    },
+    "metrics-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat-pool",
+        "stat-shopvault",
+        "stat-paused",
+        "stat-burn"
+      ]
+    },
+    "stat-pool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "100.62M LAWB"
+      },
+      "children": []
+    },
+    "stat-shopvault": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19.00M LAWB"
+      },
+      "children": []
+    },
+    "stat-paused": {
+      "type": "Stat",
+      "props": {
+        "label": "Paused",
+        "value": "false"
+      },
+      "children": []
+    },
+    "stat-burn": {
+      "type": "Stat",
+      "props": {
+        "label": "Burn (24h)",
+        "value": "insufficient data (first run)"
+      },
+      "children": []
+    },
+    "separator-1": {
+      "type": "Separator",
+      "props": {},
+      "children": []
+    },
+    "activity-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "activity-heading",
+        "activity-events",
+        "activity-blocks"
+      ]
+    },
+    "activity-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Last 1h Activity",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "activity-events": {
+      "type": "Text",
+      "props": {
+        "text": "0 Redeemed events in last 1800 blocks (~1h)",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "activity-blocks": {
+      "type": "Text",
+      "props": {
+        "text": "block 46366399 → 46368199",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "separator-2": {
+      "type": "Separator",
+      "props": {},
+      "children": []
+    },
+    "alerts-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "alerts-heading",
+        "alert-shopvault"
+      ]
+    },
+    "alerts-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Alerts",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "alert-shopvault": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "shopVault holds 19.00M LAWB but the post-2026-05-23 upgrade expects it to drain to prizePool. Either the migration has not yet been performed, or buy() revenue is still routing into shopVault instead of prizePool. Worth inspecting setItem state and verifying the buy() implementation on the live proxy."
+      },
+      "children": []
+    },
+    "separator-3": {
+      "type": "Separator",
+      "props": {},
+      "children": []
+    },
+    "contract-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "contract-heading",
+        "contract-address",
+        "contract-link"
+      ]
+    },
+    "contract-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Contract",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "contract-address": {
+      "type": "Text",
+      "props": {
+        "text": "0x48b2db9E89542Baa217bf8dc6269164b7887fE57 (Base 8453)",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "contract-link": {
+      "type": "Link",
+      "props": {
+        "label": "View on Basescan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      },
+      "children": []
+    }
+  }
+}

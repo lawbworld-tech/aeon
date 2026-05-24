@@ -1,0 +1,159 @@
+{
+  "root": "card-main",
+  "state": {},
+  "elements": {
+    "card-main": {
+      "type": "Card",
+      "props": {
+        "title": "Heartbeat Status"
+      },
+      "children": [
+        "alert-degraded",
+        "sep-1",
+        "section-skills",
+        "sep-2",
+        "section-details"
+      ]
+    },
+    "alert-degraded": {
+      "type": "Alert",
+      "props": {
+        "title": "🔴 DEGRADED",
+        "message": "lawb-pool-monitor and heartbeat failed with identical zero-token error signatures at 15:49Z",
+        "type": "error"
+      }
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "section-skills": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-skills",
+        "stack-lawb",
+        "stack-heartbeat"
+      ]
+    },
+    "heading-skills": {
+      "type": "Heading",
+      "props": {
+        "text": "Affected Skills",
+        "level": "h3"
+      }
+    },
+    "stack-lawb": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "stat-lawb-fails",
+        "stat-lawb-success"
+      ]
+    },
+    "stat-lawb-fails": {
+      "type": "Stat",
+      "props": {
+        "label": "lawb-pool-monitor consecutive failures",
+        "value": "5"
+      }
+    },
+    "stat-lawb-success": {
+      "type": "Stat",
+      "props": {
+        "label": "lawb-pool-monitor success rate",
+        "value": "50%",
+        "trend": "down"
+      }
+    },
+    "stack-heartbeat": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "stat-heartbeat-fails",
+        "stat-heartbeat-success"
+      ]
+    },
+    "stat-heartbeat-fails": {
+      "type": "Stat",
+      "props": {
+        "label": "heartbeat consecutive failures",
+        "value": "3"
+      }
+    },
+    "stat-heartbeat-success": {
+      "type": "Stat",
+      "props": {
+        "label": "heartbeat success rate",
+        "value": "25%",
+        "trend": "down"
+      }
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "section-details": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-details",
+        "text-diagnosis",
+        "text-timeline",
+        "text-threshold",
+        "text-issues"
+      ]
+    },
+    "heading-details": {
+      "type": "Heading",
+      "props": {
+        "text": "Root Cause & Status",
+        "level": "h3"
+      }
+    },
+    "text-diagnosis": {
+      "type": "Text",
+      "props": {
+        "text": "Identical zero-token error signatures suggest shared Claude dispatch problem at 15:49Z slot.",
+        "variant": "body"
+      }
+    },
+    "text-timeline": {
+      "type": "Text",
+      "props": {
+        "text": "Last success for both: 2026-05-23 15:52Z (~25h ago).",
+        "variant": "body"
+      }
+    },
+    "text-threshold": {
+      "type": "Text",
+      "props": {
+        "text": "Heartbeat self-check still under 36h threshold, but trending bad.",
+        "variant": "body"
+      }
+    },
+    "text-issues": {
+      "type": "Text",
+      "props": {
+        "text": "P1/P2 clean; no PRs, no urgent issues.",
+        "variant": "body"
+      }
+    }
+  }
+}

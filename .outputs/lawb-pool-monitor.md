@@ -1,21 +1,27 @@
+Pool monitor run complete. No notification sent (one condition tripped but on cooldown until 22:53Z).
+
 ## Summary
 
-Executed lawb-pool-monitor for the 18:58Z slot.
+**Pool state read from Base mainnet @ block 46,433,957:**
+- prizePool: **15.24M LAWB** (down 25K from prior run at 18:58Z)
+- shopVault: **19.00M LAWB** (unchanged — sixth consecutive stuck reading)
+- paused: **false**
 
-**Contract state:**
-- prizePool: **15.27M LAWB** (Δ0 since 16:53Z)
-- shopVault: **19.00M LAWB** (unchanged, 5th consecutive stuck check)
-- paused: false
-- Block: 46426020 → 46429840 (3,820 blocks, ~2.1h)
+**Event scan (46,429,840 → 46,433,957, ~2.3h, 4,117 blocks):** 1 Redeemed event — `0x19f6d139…732f2` for 25K LAWB at block 46,430,979 (2026-05-24 19:35Z). Pool delta exactly matches outflow → no buy() inflow this window.
 
-**Event scan:** 0 Redeemed events in window — economy idle.
+**Burn rate (24h):** ~137K LAWB/24h — three samples spanning 4.38h. Far below the 100M warning threshold.
 
-**Burn rate (24h):** 0 LAWB/24h (2 samples, identical pool values).
+**Alert evaluation:**
+- `paused` — false ✓
+- `shop_vault_nonzero` — tripped (19M > 0), but **on cooldown** until 2026-05-24T22:53:01Z (1h38m remaining) → SUPPRESSED, no notify
+- `low_pool` (10M) — clear (5.24M buffer)
+- `critical_low_pool` (1M) — clear
+- `high_burn` (100M/24h) — clear
 
-**Alerts:** None fired. shop_vault_nonzero still triggering but **on cooldown** (last alerted 16:53Z, next eligible 22:53Z) → `POOL_MONITOR_SUPPRESSED` logged, no `./notify` call.
+**Files modified:**
+- `memory/lawb-pool-monitor-state.json` — updated last_block, last_pool_wei, last_run, appended new burn-window sample
+- `memory/logs/2026-05-24.md` — appended 21:15Z run entry
 
-**Files updated:**
-- `memory/lawb-pool-monitor-state.json` — last_block, last_pool_wei, last_run, burn_window_24h advanced
-- `memory/logs/2026-05-24.md` — appended skill run entry
-
-**Follow-up:** Pool buffer is thin (5.27M above 10M warning threshold) — a single MAX_PRICE redeem cluster could trip `low_pool`. ShopVault still stuck at 19M across five checks; manual investigation still recommended.
+**Follow-up flags for the operator:**
+- shopVault has now been stranded at 19M LAWB across six consecutive checks since the 2026-05-23 upgrade. The auto-routing migration did not sweep it. Manual investigation/sweep recommended.
+- Hourly cron is still drifting (2h17m gap this slot), separate from the skill's logic.

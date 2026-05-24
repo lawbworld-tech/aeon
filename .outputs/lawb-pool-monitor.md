@@ -1,19 +1,21 @@
-🎣 LAWB Pool Monitor
+## Summary
 
-Pool: 15.27M LAWB (Δ-87.77M since 2026-05-23 15:50Z)
-ShopVault: 19.00M LAWB
-Paused: false
-Burn rate (24h): n/a — only 1 sample in 24h window after sampling gap (last run was ~25h ago, hourly schedule missed)
+Executed lawb-pool-monitor for the 18:58Z slot.
 
-Activity since last run (22h):
-• 132 redeems · 136.97M LAWB out · 22 unique wallets
-• Top wallet: 0xc34cb3…4804 (28.02M LAWB across 57 redeems)
-• Largest single: 5M LAWB by 0xbb414c…8cbc
-• Last redeem: ~15:20Z (~1.5h ago)
+**Contract state:**
+- prizePool: **15.27M LAWB** (Δ0 since 16:53Z)
+- shopVault: **19.00M LAWB** (unchanged, 5th consecutive stuck check)
+- paused: false
+- Block: 46426020 → 46429840 (3,820 blocks, ~2.1h)
 
-Alerts:
-⚠️ SHOP_VAULT_NONZERO — 19M LAWB parked in shopVault, unchanged since 2026-05-23; should be 0 post-upgrade
+**Event scan:** 0 Redeemed events in window — economy idle.
 
-Context: pool dropped 85% over the past day. Buy() inflows partially offset (~49M LAWB). Approaching the 10M LAWB low_pool threshold — would trip if redemption pace continues.
+**Burn rate (24h):** 0 LAWB/24h (2 samples, identical pool values).
 
-https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events
+**Alerts:** None fired. shop_vault_nonzero still triggering but **on cooldown** (last alerted 16:53Z, next eligible 22:53Z) → `POOL_MONITOR_SUPPRESSED` logged, no `./notify` call.
+
+**Files updated:**
+- `memory/lawb-pool-monitor-state.json` — last_block, last_pool_wei, last_run, burn_window_24h advanced
+- `memory/logs/2026-05-24.md` — appended skill run entry
+
+**Follow-up:** Pool buffer is thin (5.27M above 10M warning threshold) — a single MAX_PRICE redeem cluster could trip `low_pool`. ShopVault still stuck at 19M across five checks; manual investigation still recommended.

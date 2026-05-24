@@ -1,0 +1,232 @@
+{
+  "root": "card_root",
+  "state": {},
+  "elements": {
+    "card_root": {
+      "type": "Card",
+      "props": {
+        "title": "🎣 LAWB Pool Monitor"
+      },
+      "children": [
+        "pool_section",
+        "separator_1",
+        "activity_section",
+        "separator_2",
+        "alerts_section",
+        "separator_3",
+        "link_section"
+      ]
+    },
+    "pool_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "pool_heading",
+        "pool_grid"
+      ]
+    },
+    "pool_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Pool Status",
+        "level": "h3"
+      }
+    },
+    "pool_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_pool",
+        "stat_shopvault",
+        "stat_paused",
+        "stat_burnrate"
+      ]
+    },
+    "stat_pool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "8.40M LAWB",
+        "delta": "-6.87M (last 6.5h), -6.85M (since 21:15Z)",
+        "trend": "down"
+      }
+    },
+    "stat_shopvault": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19.00M LAWB",
+        "delta": "Stuck, 7th consecutive check, no operator sweep",
+        "trend": "down"
+      }
+    },
+    "stat_paused": {
+      "type": "Badge",
+      "props": {
+        "text": "Paused: false",
+        "variant": "secondary"
+      }
+    },
+    "stat_burnrate": {
+      "type": "Stat",
+      "props": {
+        "label": "24h Burn Rate",
+        "value": "~25.5M LAWB/24h",
+        "delta": "Depletes in ~7.9h at current pace",
+        "trend": "down"
+      }
+    },
+    "separator_1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "activity_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "activity_heading",
+        "activity_period",
+        "activity_stats",
+        "activity_details"
+      ]
+    },
+    "activity_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Recent Activity (Last ~2h)",
+        "level": "h3"
+      }
+    },
+    "activity_period": {
+      "type": "Text",
+      "props": {
+        "text": "Blocks 46433957 → 46437687",
+        "variant": "muted"
+      }
+    },
+    "activity_stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat_redeems",
+        "stat_outflow",
+        "stat_unique_wallets"
+      ]
+    },
+    "stat_redeems": {
+      "type": "Stat",
+      "props": {
+        "label": "Redeems",
+        "value": "13"
+      }
+    },
+    "stat_outflow": {
+      "type": "Stat",
+      "props": {
+        "label": "LAWB Out",
+        "value": "9.55M"
+      }
+    },
+    "stat_unique_wallets": {
+      "type": "Stat",
+      "props": {
+        "label": "Unique Wallets",
+        "value": "2"
+      }
+    },
+    "activity_details": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "wallet_1",
+        "wallet_2"
+      ]
+    },
+    "wallet_1": {
+      "type": "Text",
+      "props": {
+        "text": "• 0x41dbef85…2536 took 4.78M LAWB in a single redeem",
+        "variant": "body"
+      }
+    },
+    "wallet_2": {
+      "type": "Text",
+      "props": {
+        "text": "• 0x3c569c4a…ae25 drained 4.77M LAWB across 12 sequential redeems (160K–480K each)",
+        "variant": "body"
+      }
+    },
+    "separator_2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alerts_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alerts_heading",
+        "alert_low_pool",
+        "alert_shop_vault_nonzero"
+      ]
+    },
+    "alerts_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Alerts",
+        "level": "h3"
+      }
+    },
+    "alert_low_pool": {
+      "type": "Alert",
+      "props": {
+        "title": "LOW_POOL",
+        "message": "prizePool 8.40M LAWB below 10M warning threshold",
+        "type": "warning"
+      }
+    },
+    "alert_shop_vault_nonzero": {
+      "type": "Alert",
+      "props": {
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "19M LAWB still parked, migration funds not auto-clearing",
+        "type": "warning"
+      }
+    },
+    "separator_3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "link_section": {
+      "type": "StoryLink",
+      "props": {
+        "title": "View on BaseScan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events",
+        "source": "BaseScan"
+      }
+    }
+  }
+}

@@ -1,27 +1,17 @@
-Pool monitor run complete. No notification sent (one condition tripped but on cooldown until 22:53Z).
+🎣 LAWB Pool Monitor
 
-## Summary
+Pool: 8.40M LAWB (Δ-6.87M last ~6.5h, Δ-6.85M since prior run at 21:15Z)
+ShopVault: 19.00M LAWB (stuck — 7th consecutive check, no operator sweep)
+Paused: false
+Burn rate (24h projected): ~25.5M LAWB/24h → pool depletes in ~7.9h at current pace
 
-**Pool state read from Base mainnet @ block 46,433,957:**
-- prizePool: **15.24M LAWB** (down 25K from prior run at 18:58Z)
-- shopVault: **19.00M LAWB** (unchanged — sixth consecutive stuck reading)
-- paused: **false**
+Last ~2h activity (blocks 46433957 → 46437687):
+• 13 redeems · 9.55M LAWB out · 2 unique wallets
+• 0x41dbef85…2536 took 4.78M in a single redeem
+• 0x3c569c4a…ae25 drained 4.77M across 12 sequential redeems (160K–480K each)
 
-**Event scan (46,429,840 → 46,433,957, ~2.3h, 4,117 blocks):** 1 Redeemed event — `0x19f6d139…732f2` for 25K LAWB at block 46,430,979 (2026-05-24 19:35Z). Pool delta exactly matches outflow → no buy() inflow this window.
+Alerts:
+⚠️ LOW_POOL — prizePool 8.40M LAWB below 10M warning threshold
+⚠️ SHOP_VAULT_NONZERO — 19M LAWB still parked, migration funds not auto-clearing
 
-**Burn rate (24h):** ~137K LAWB/24h — three samples spanning 4.38h. Far below the 100M warning threshold.
-
-**Alert evaluation:**
-- `paused` — false ✓
-- `shop_vault_nonzero` — tripped (19M > 0), but **on cooldown** until 2026-05-24T22:53:01Z (1h38m remaining) → SUPPRESSED, no notify
-- `low_pool` (10M) — clear (5.24M buffer)
-- `critical_low_pool` (1M) — clear
-- `high_burn` (100M/24h) — clear
-
-**Files modified:**
-- `memory/lawb-pool-monitor-state.json` — updated last_block, last_pool_wei, last_run, appended new burn-window sample
-- `memory/logs/2026-05-24.md` — appended 21:15Z run entry
-
-**Follow-up flags for the operator:**
-- shopVault has now been stranded at 19M LAWB across six consecutive checks since the 2026-05-23 upgrade. The auto-routing migration did not sweep it. Manual investigation/sweep recommended.
-- Hourly cron is still drifting (2h17m gap this slot), separate from the skill's logic.
+https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events

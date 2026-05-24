@@ -1,0 +1,232 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🎣 LAWB Pool Monitor"
+      },
+      "children": [
+        "metrics_stack",
+        "separator1",
+        "activity_section",
+        "separator2",
+        "alert_section",
+        "separator3",
+        "context_section",
+        "separator4",
+        "link_section"
+      ]
+    },
+    "metrics_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "pool_stat",
+        "shopvault_stat",
+        "paused_text",
+        "burnrate_text"
+      ]
+    },
+    "pool_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "15.27M LAWB",
+        "delta": "-87.77M (since 2026-05-23 15:50Z)",
+        "trend": "down"
+      }
+    },
+    "shopvault_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19.00M LAWB"
+      }
+    },
+    "paused_text": {
+      "type": "Text",
+      "props": {
+        "text": "Paused: false"
+      }
+    },
+    "burnrate_text": {
+      "type": "Text",
+      "props": {
+        "text": "Burn rate (24h): n/a — only 1 sample in 24h window after sampling gap (last run was ~25h ago, hourly schedule missed)",
+        "variant": "caption"
+      }
+    },
+    "separator1": {
+      "type": "Separator",
+      "props": {}
+    },
+    "activity_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "activity_heading",
+        "activity_summary",
+        "activity_details"
+      ]
+    },
+    "activity_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Activity since last run (22h)",
+        "level": "h3"
+      }
+    },
+    "activity_summary": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "redeems_stat",
+        "outflow_stat",
+        "wallets_stat"
+      ]
+    },
+    "redeems_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Redeems",
+        "value": "132"
+      }
+    },
+    "outflow_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "LAWB Out",
+        "value": "136.97M"
+      }
+    },
+    "wallets_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Unique Wallets",
+        "value": "22"
+      }
+    },
+    "activity_details": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "top_wallet_text",
+        "largest_single_text",
+        "last_redeem_text"
+      ]
+    },
+    "top_wallet_text": {
+      "type": "Text",
+      "props": {
+        "text": "Top wallet: 0xc34cb3…4804 (28.02M LAWB across 57 redeems)",
+        "variant": "body"
+      }
+    },
+    "largest_single_text": {
+      "type": "Text",
+      "props": {
+        "text": "Largest single: 5M LAWB by 0xbb414c…8cbc",
+        "variant": "body"
+      }
+    },
+    "last_redeem_text": {
+      "type": "Text",
+      "props": {
+        "text": "Last redeem: ~15:20Z (~1.5h ago)",
+        "variant": "body"
+      }
+    },
+    "separator2": {
+      "type": "Separator",
+      "props": {}
+    },
+    "alert_section": {
+      "type": "Alert",
+      "props": {
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "19M LAWB parked in shopVault, unchanged since 2026-05-23; should be 0 post-upgrade",
+        "type": "warning"
+      }
+    },
+    "separator3": {
+      "type": "Separator",
+      "props": {}
+    },
+    "context_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "context_heading",
+        "context_details"
+      ]
+    },
+    "context_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Context",
+        "level": "h3"
+      }
+    },
+    "context_details": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "context_drop_text",
+        "context_inflow_text",
+        "context_threshold_text"
+      ]
+    },
+    "context_drop_text": {
+      "type": "Text",
+      "props": {
+        "text": "Pool dropped 85% over the past day",
+        "variant": "body"
+      }
+    },
+    "context_inflow_text": {
+      "type": "Text",
+      "props": {
+        "text": "Buy() inflows partially offset (~49M LAWB)",
+        "variant": "body"
+      }
+    },
+    "context_threshold_text": {
+      "type": "Text",
+      "props": {
+        "text": "Approaching the 10M LAWB low_pool threshold — would trip if redemption pace continues",
+        "variant": "body"
+      }
+    },
+    "separator4": {
+      "type": "Separator",
+      "props": {}
+    },
+    "link_section": {
+      "type": "Link",
+      "props": {
+        "label": "View on Basescan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      }
+    }
+  }
+}

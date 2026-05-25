@@ -1,20 +1,19 @@
 ## Summary
 
-Ran `lawb-pool-monitor` at 2026-05-25T16:22:53Z. All conditions clear — no notification sent.
+Ran `lawb-pool-monitor` for the 18:08Z slot on 2026-05-25. All thresholds clear → **no notification sent** (per spec: all-clear + `var` empty = `POOL_MONITOR_OK`).
 
-**Snapshot:**
-- Pool: 59.295M LAWB (Δ0 since 13:54Z — byte-identical)
-- ShopVault: 0 LAWB ✓
-- Paused: false
-- Burn rate 24h: −44.97M (pool net grew over the 24h window)
-- Redeems in window (blocks 46463927 → 46485275, 21,349 blocks): **0 events** (zero logs of any topic from the contract)
+**Findings**:
+- **Pool**: 59.295M LAWB (flat — identical to last 2 runs)
+- **ShopVault**: 0 LAWB (operator sweep still holding, 5th consecutive slot)
+- **Paused**: false
+- **Burn rate (24h)**: −45.59M LAWB/24h (pool grew net vs 24h ago, no high_burn alert)
+- **Redeems in last 1h**: 0 events
+- **State corruption fixed**: prior run's `last_block` (46485275) was 13,720 blocks ahead of chain head (46471555). Reinit'd scan window to last 1,800 blocks, persisted corrected `last_block=46471555`.
 
-**End-state:** `POOL_MONITOR_OK`. First fully quiet slot observed across this monitoring series — zero activity, no operator action required.
+**Files modified**:
+- `memory/lawb-pool-monitor-state.json` — updated `last_block` (rewound), `last_run`, rolled `burn_window_24h` (dropped 16:53Z entry past 24h, appended 18:08Z entry)
+- `memory/logs/2026-05-25.md` — appended 18:08Z run entry
 
-**Files updated:**
-- `memory/lawb-pool-monitor-state.json` — last_block, last_pool_wei, last_run, burn_window_24h (9 samples now)
-- `memory/logs/2026-05-25.md` — appended 16:22Z entry
-
-**Follow-up worth flagging:**
-- `SKILL.md` curl examples use selectors `0xeb1edd61` (prizePool) and `0x2dfdf0b5` (shopVault) — both revert on-chain. The selector table just above (`0x719ce73e` / `0x29c2aa0a`) is correct and was used. The curl example block should be updated so future runs don't waste a retry on the wrong selectors.
-- Block-to-time ratio (~412ms/block over this window) is inconsistent with Base's nominal 2s. Either Base block cadence has accelerated or a prior run advanced `last_block` past the live head. eth_getLogs over the full range returned empty with no topic filter, so the empty result is real either way.
+**Follow-ups**:
+- Sandbox blocked `mv`/`rm` on `memory/lawb-pool-monitor-state.json.tmp`, so an orphan `.tmp` file is left behind. Final state was written directly to the canonical path so the data is correct. Worth investigating sandbox policy on `.tmp` paths before next run.
+- SKILL.md curl examples still list wrong selectors (`0xeb1edd61` / `0x2dfdf0b5`); table above the curl block is correct (`0x719ce73e` / `0x29c2aa0a`). Carried over from prior log's note.

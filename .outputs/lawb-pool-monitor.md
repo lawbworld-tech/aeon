@@ -1,24 +1,20 @@
 ## Summary
 
-Executed `lawb-pool-monitor` against LawbFishing on Base mainnet at 2026-05-25T10:49Z. All thresholds clear — no notification sent.
+Executed `lawb-pool-monitor` for the 2026-05-25 13:54Z slot. All thresholds clear — no notification sent (POOL_MONITOR_OK end-state).
 
 **Snapshot:**
-- `prizePool`: **65.245M LAWB** (Δ-25.47M since 06:08Z)
-- `shopVault`: **0** ✓ (operator sweep still holding)
-- `paused`: false ✓
+- Pool: **59.295M LAWB** (Δ-5.95M since 10:49Z)
+- ShopVault: **0 LAWB** ✓
+- Paused: false ✓
+- Burn rate (24h): **−50.25M LAWB** (pool grew net over 21h window)
 
-**Window activity (block 46449988 → 46458352, ~4.65h):**
-- 16 Redeemed events, 58.97M LAWB out, 13 unique wallets
-- Top wallet by total: `0xe4b7aa…40a3` (4.86M, 3 redeems)
-- Largest single: `0xc1177a…cc46` at 4.79M
-- Inferred buy()/fundPool inflow: ~33.5M LAWB
-
-**Burn rate (24h):** -66.84M LAWB (pool net grew over the 17.95h sample window). high_burn warning not tripped.
-
-**Alerts:** none. `var` empty → POOL_MONITOR_OK, no notify.
+**Activity scanned (blocks 46458353 → 46463926, ~3.1h):**
+- 4 Redeemed events, 18.45M LAWB out, 4 unique wallets — all MAX_PRICE-tier (~4.6M each), clustered 11:00Z–11:48Z
+- Inferred ~12.5M LAWB inflow from buy()/fundPool (~4M/h)
+- Outflow rate 5.95M/h, down from 12.7M/h prior slot — quieter cohort, all 4 wallets fresh
 
 **Files modified:**
-- `memory/lawb-pool-monitor-state.json` — last_block 46458352, last_pool_wei 65.245M, new burn_window entry
-- `memory/logs/2026-05-25.md` — appended 10:49Z entry
+- `memory/lawb-pool-monitor-state.json` — last_block 46463926, last_pool_wei 59.295M, burn_window_24h appended (8 samples)
+- `memory/logs/2026-05-25.md` — appended 13:54Z entry
 
-**Follow-up:** Outflow at 12.7M/h is the highest sustained rate observed; runway without inflow ~5.1h. Worth watching whether the broader cohort (13 distinct extractors this slot) keeps pressure on the pool. Hourly cron is still drifting at ~4.5–5h cadence — separate concern outside this skill's scope.
+**Follow-up:** Cron drift improved (3h05m gap vs prior 4h41m) but still off the hourly target. Schedule reliability remains the open issue.

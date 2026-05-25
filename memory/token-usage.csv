@@ -8,3 +8,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-05-24,heartbeat,claude-opus-4-7,674,6775,261472,35954
 2026-05-24,lawb-pool-monitor,claude-opus-4-7,33,12170,1277420,35436
 2026-05-24,lawb-pool-monitor,claude-opus-4-7,377,15058,841353,40657
+2026-05-25,lawb-pool-monitor,claude-opus-4-7,100,21264,1963647,47481

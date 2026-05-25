@@ -1,0 +1,252 @@
+{
+  "root": "card-main",
+  "state": {},
+  "elements": {
+    "card-main": {
+      "type": "Card",
+      "props": {
+        "title": "🚨 LAWB Pool Monitor — CRITICAL"
+      },
+      "children": [
+        "stack-main"
+      ]
+    },
+    "stack-main": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading-status",
+        "stats-section",
+        "sep-1",
+        "heading-burn",
+        "burn-section",
+        "sep-2",
+        "heading-activity",
+        "activity-summary",
+        "activity-table",
+        "sep-3",
+        "heading-alerts",
+        "alerts-section",
+        "sep-4",
+        "heading-action",
+        "action-section"
+      ]
+    },
+    "heading-status": {
+      "type": "Heading",
+      "props": {
+        "text": "Pool Status",
+        "level": "h3"
+      }
+    },
+    "stats-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "stat-pool",
+        "stat-shopvault",
+        "stat-paused"
+      ]
+    },
+    "stat-pool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "35K LAWB",
+        "delta": "-8.36M last 2h",
+        "trend": "down"
+      }
+    },
+    "stat-shopvault": {
+      "type": "Stat",
+      "props": {
+        "label": "ShopVault",
+        "value": "19M LAWB",
+        "delta": "8th consecutive check, still stranded"
+      }
+    },
+    "stat-paused": {
+      "type": "Stat",
+      "props": {
+        "label": "Paused",
+        "value": "false"
+      }
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-burn": {
+      "type": "Heading",
+      "props": {
+        "text": "Burn & Runway",
+        "level": "h3"
+      }
+    },
+    "burn-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "stat-burn",
+        "text-runway"
+      ]
+    },
+    "stat-burn": {
+      "type": "Stat",
+      "props": {
+        "label": "Burn (24h projected)",
+        "value": "42.3M LAWB"
+      }
+    },
+    "text-runway": {
+      "type": "Text",
+      "props": {
+        "text": "Pool runway: effectively zero — pool below MIN_PRICE × 7",
+        "variant": "muted"
+      }
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-activity": {
+      "type": "Heading",
+      "props": {
+        "text": "Last 2h Activity",
+        "level": "h3"
+      }
+    },
+    "activity-summary": {
+      "type": "Text",
+      "props": {
+        "text": "7 redeems, 8.36M LAWB out, 3 wallets in a 3-min burst (00:21–00:24Z)"
+      }
+    },
+    "activity-table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Wallet",
+          "Transactions",
+          "Total"
+        ],
+        "rows": [
+          [
+            "0xd8ef61…7901",
+            "3× 1.6M",
+            "4.8M LAWB"
+          ],
+          [
+            "0x61e676…ed88",
+            "3× 1.0M",
+            "3.0M LAWB"
+          ],
+          [
+            "0x3c569c…ae25",
+            "1× 560K",
+            "560K LAWB"
+          ]
+        ]
+      }
+    },
+    "sep-3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-alerts": {
+      "type": "Heading",
+      "props": {
+        "text": "Alerts",
+        "level": "h3"
+      }
+    },
+    "alerts-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "alert-1",
+        "alert-2",
+        "alert-3"
+      ]
+    },
+    "alert-1": {
+      "type": "Alert",
+      "props": {
+        "type": "error",
+        "title": "CRITICAL_LOW_POOL",
+        "message": "prizePool 35K LAWB below 1M critical threshold; next redeem above 35K will PoolDeplete"
+      }
+    },
+    "alert-2": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "LOW_POOL",
+        "message": "on 6h cooldown, last alerted 23:20Z"
+      }
+    },
+    "alert-3": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "SHOP_VAULT_NONZERO",
+        "message": "on 6h cooldown, last alerted 23:20Z — 19M LAWB stranded"
+      }
+    },
+    "sep-4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "heading-action": {
+      "type": "Heading",
+      "props": {
+        "text": "Action Required",
+        "level": "h3"
+      }
+    },
+    "action-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "action-text",
+        "basescan-link"
+      ]
+    },
+    "action-text": {
+      "type": "Text",
+      "props": {
+        "text": "operator should fundPool ASAP, or sweep shopVault → prizePool to refill"
+      }
+    },
+    "basescan-link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "View on BaseScan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      }
+    }
+  }
+}

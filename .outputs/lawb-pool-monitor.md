@@ -1,17 +1,22 @@
-🎣 LAWB Pool Monitor
+🚨 LAWB Pool Monitor — CRITICAL
 
-Pool: 8.40M LAWB (Δ-6.87M last ~6.5h, Δ-6.85M since prior run at 21:15Z)
-ShopVault: 19.00M LAWB (stuck — 7th consecutive check, no operator sweep)
+Pool: 35K LAWB (Δ-8.36M last 2h) — critically depleted
+ShopVault: 19M LAWB (8th consecutive check, still stranded)
 Paused: false
-Burn rate (24h projected): ~25.5M LAWB/24h → pool depletes in ~7.9h at current pace
 
-Last ~2h activity (blocks 46433957 → 46437687):
-• 13 redeems · 9.55M LAWB out · 2 unique wallets
-• 0x41dbef85…2536 took 4.78M in a single redeem
-• 0x3c569c4a…ae25 drained 4.77M across 12 sequential redeems (160K–480K each)
+Burn (24h projected): 42.3M LAWB
+Pool runway: effectively zero — pool below MIN_PRICE × 7
+
+Last 2h activity: 7 redeems, 8.36M LAWB out, 3 wallets in a 3-min burst (00:21–00:24Z):
+• 0xd8ef61…7901 — 3× 1.6M = 4.8M LAWB
+• 0x61e676…ed88 — 3× 1.0M = 3.0M LAWB
+• 0x3c569c…ae25 — 1× 560K LAWB
 
 Alerts:
-⚠️ LOW_POOL — prizePool 8.40M LAWB below 10M warning threshold
-⚠️ SHOP_VAULT_NONZERO — 19M LAWB still parked, migration funds not auto-clearing
+🚨 CRITICAL_LOW_POOL — prizePool 35K LAWB below 1M critical threshold; next redeem above 35K will PoolDeplete
+⚠️ LOW_POOL active (on 6h cooldown, last alerted 23:20Z)
+⚠️ SHOP_VAULT_NONZERO active (on 6h cooldown, last alerted 23:20Z) — 19M LAWB stranded
+
+Action: operator should fundPool ASAP, or sweep shopVault → prizePool to refill.
 
 https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events

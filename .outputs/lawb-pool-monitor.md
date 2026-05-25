@@ -1,22 +1,25 @@
-🚨 LAWB Pool Monitor — CRITICAL
+## Summary
 
-Pool: 35K LAWB (Δ-8.36M last 2h) — critically depleted
-ShopVault: 19M LAWB (8th consecutive check, still stranded)
-Paused: false
+**lawb-pool-monitor executed successfully — all alerts cleared, no notification sent (per spec).**
 
-Burn (24h projected): 42.3M LAWB
-Pool runway: effectively zero — pool below MIN_PRICE × 7
+### Result: POOL_MONITOR_OK
+- **Pool**: 90.715M LAWB (recovered from 35K critical-low at 01:30Z)
+- **ShopVault**: 0 LAWB (operator finally swept the stale 19M — first time clear in 8+ checks)
+- **Paused**: false
+- **Burn (24h)**: −136.5M (pool grew; no warn)
+- **Redeems in 4.6h window**: 6 events / 22.82M LAWB / 5 wallets (post-funding extraction burst, 04:07Z–06:06Z)
+- **Inferred inflow**: ~113.5M LAWB (19M vault sweep + ~94.5M fundPool/buy())
 
-Last 2h activity: 7 redeems, 8.36M LAWB out, 3 wallets in a 3-min burst (00:21–00:24Z):
-• 0xd8ef61…7901 — 3× 1.6M = 4.8M LAWB
-• 0x61e676…ed88 — 3× 1.0M = 3.0M LAWB
-• 0x3c569c…ae25 — 1× 560K LAWB
+### Conditions auto-cleared
+- `critical_low_pool` (was 01:30Z)
+- `low_pool` (was 2026-05-24T23:20Z)
+- `shop_vault_nonzero` (was 2026-05-24T23:20Z)
 
-Alerts:
-🚨 CRITICAL_LOW_POOL — prizePool 35K LAWB below 1M critical threshold; next redeem above 35K will PoolDeplete
-⚠️ LOW_POOL active (on 6h cooldown, last alerted 23:20Z)
-⚠️ SHOP_VAULT_NONZERO active (on 6h cooldown, last alerted 23:20Z) — 19M LAWB stranded
+### Files modified
+- `memory/lawb-pool-monitor-state.json` — last_block 46449987, last_pool 90.715M LAWB, all alerted_conditions → null, burn_window appended
+- `memory/logs/2026-05-25.md` — appended 06:08Z entry
 
-Action: operator should fundPool ASAP, or sweep shopVault → prizePool to refill.
-
-https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events
+### Follow-up needed
+- **SKILL doc bug** at `skills/lawb-pool-monitor/SKILL.md:73-78`: the bash example uses selectors `0xeb1edd61` (prizePool) and `0x2dfdf0b5` (shopVault) which both **revert** on the contract. The correct selectors from the table (lines 23-29) are `0x719ce73e` and `0x29c2aa0a`. The event-topic example at line 102 (`0x07a0d4b9…`) also disagrees with the table (`0x3be2edea…`); the table value worked, the bash example was not retested. Recommend fixing the bash examples to match the table selectors so future runs aren't bottlenecked debugging this.
+- Watch next slot: post-funding extraction was aggressive (≈10M LAWB/h). At that pace 90.7M depletes in ~8h, which would re-trip `low_pool` ~14:08Z if no further inflow.
+- Hourly schedule still drifting (4h38m gap this slot). Outside this skill's scope but worth heartbeat tracking.

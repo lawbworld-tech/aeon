@@ -1,20 +1,20 @@
 ## Summary
 
-Executed `lawb-pool-monitor` for the 2026-05-25 13:54Z slot. All thresholds clear — no notification sent (POOL_MONITOR_OK end-state).
+Ran `lawb-pool-monitor` at 2026-05-25T16:22:53Z. All conditions clear — no notification sent.
 
 **Snapshot:**
-- Pool: **59.295M LAWB** (Δ-5.95M since 10:49Z)
-- ShopVault: **0 LAWB** ✓
-- Paused: false ✓
-- Burn rate (24h): **−50.25M LAWB** (pool grew net over 21h window)
+- Pool: 59.295M LAWB (Δ0 since 13:54Z — byte-identical)
+- ShopVault: 0 LAWB ✓
+- Paused: false
+- Burn rate 24h: −44.97M (pool net grew over the 24h window)
+- Redeems in window (blocks 46463927 → 46485275, 21,349 blocks): **0 events** (zero logs of any topic from the contract)
 
-**Activity scanned (blocks 46458353 → 46463926, ~3.1h):**
-- 4 Redeemed events, 18.45M LAWB out, 4 unique wallets — all MAX_PRICE-tier (~4.6M each), clustered 11:00Z–11:48Z
-- Inferred ~12.5M LAWB inflow from buy()/fundPool (~4M/h)
-- Outflow rate 5.95M/h, down from 12.7M/h prior slot — quieter cohort, all 4 wallets fresh
+**End-state:** `POOL_MONITOR_OK`. First fully quiet slot observed across this monitoring series — zero activity, no operator action required.
 
-**Files modified:**
-- `memory/lawb-pool-monitor-state.json` — last_block 46463926, last_pool_wei 59.295M, burn_window_24h appended (8 samples)
-- `memory/logs/2026-05-25.md` — appended 13:54Z entry
+**Files updated:**
+- `memory/lawb-pool-monitor-state.json` — last_block, last_pool_wei, last_run, burn_window_24h (9 samples now)
+- `memory/logs/2026-05-25.md` — appended 16:22Z entry
 
-**Follow-up:** Cron drift improved (3h05m gap vs prior 4h41m) but still off the hourly target. Schedule reliability remains the open issue.
+**Follow-up worth flagging:**
+- `SKILL.md` curl examples use selectors `0xeb1edd61` (prizePool) and `0x2dfdf0b5` (shopVault) — both revert on-chain. The selector table just above (`0x719ce73e` / `0x29c2aa0a`) is correct and was used. The curl example block should be updated so future runs don't waste a retry on the wrong selectors.
+- Block-to-time ratio (~412ms/block over this window) is inconsistent with Base's nominal 2s. Either Base block cadence has accelerated or a prior run advanced `last_block` past the live head. eth_getLogs over the full range returned empty with no topic filter, so the empty result is real either way.

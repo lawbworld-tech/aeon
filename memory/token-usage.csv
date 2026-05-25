@@ -12,3 +12,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-05-25,lawb-pool-monitor,claude-opus-4-7,29,17897,1174273,44311
 2026-05-25,lawb-pool-monitor,claude-opus-4-7,564,14782,933990,45041
 2026-05-25,lawb-pool-monitor,claude-opus-4-7,246,13330,877620,38309
+2026-05-25,lawb-pool-monitor,claude-opus-4-7,676,10861,708897,33627

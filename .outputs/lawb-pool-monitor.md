@@ -1,25 +1,24 @@
 ## Summary
 
-**lawb-pool-monitor executed successfully — all alerts cleared, no notification sent (per spec).**
+Executed `lawb-pool-monitor` against LawbFishing on Base mainnet at 2026-05-25T10:49Z. All thresholds clear — no notification sent.
 
-### Result: POOL_MONITOR_OK
-- **Pool**: 90.715M LAWB (recovered from 35K critical-low at 01:30Z)
-- **ShopVault**: 0 LAWB (operator finally swept the stale 19M — first time clear in 8+ checks)
-- **Paused**: false
-- **Burn (24h)**: −136.5M (pool grew; no warn)
-- **Redeems in 4.6h window**: 6 events / 22.82M LAWB / 5 wallets (post-funding extraction burst, 04:07Z–06:06Z)
-- **Inferred inflow**: ~113.5M LAWB (19M vault sweep + ~94.5M fundPool/buy())
+**Snapshot:**
+- `prizePool`: **65.245M LAWB** (Δ-25.47M since 06:08Z)
+- `shopVault`: **0** ✓ (operator sweep still holding)
+- `paused`: false ✓
 
-### Conditions auto-cleared
-- `critical_low_pool` (was 01:30Z)
-- `low_pool` (was 2026-05-24T23:20Z)
-- `shop_vault_nonzero` (was 2026-05-24T23:20Z)
+**Window activity (block 46449988 → 46458352, ~4.65h):**
+- 16 Redeemed events, 58.97M LAWB out, 13 unique wallets
+- Top wallet by total: `0xe4b7aa…40a3` (4.86M, 3 redeems)
+- Largest single: `0xc1177a…cc46` at 4.79M
+- Inferred buy()/fundPool inflow: ~33.5M LAWB
 
-### Files modified
-- `memory/lawb-pool-monitor-state.json` — last_block 46449987, last_pool 90.715M LAWB, all alerted_conditions → null, burn_window appended
-- `memory/logs/2026-05-25.md` — appended 06:08Z entry
+**Burn rate (24h):** -66.84M LAWB (pool net grew over the 17.95h sample window). high_burn warning not tripped.
 
-### Follow-up needed
-- **SKILL doc bug** at `skills/lawb-pool-monitor/SKILL.md:73-78`: the bash example uses selectors `0xeb1edd61` (prizePool) and `0x2dfdf0b5` (shopVault) which both **revert** on the contract. The correct selectors from the table (lines 23-29) are `0x719ce73e` and `0x29c2aa0a`. The event-topic example at line 102 (`0x07a0d4b9…`) also disagrees with the table (`0x3be2edea…`); the table value worked, the bash example was not retested. Recommend fixing the bash examples to match the table selectors so future runs aren't bottlenecked debugging this.
-- Watch next slot: post-funding extraction was aggressive (≈10M LAWB/h). At that pace 90.7M depletes in ~8h, which would re-trip `low_pool` ~14:08Z if no further inflow.
-- Hourly schedule still drifting (4h38m gap this slot). Outside this skill's scope but worth heartbeat tracking.
+**Alerts:** none. `var` empty → POOL_MONITOR_OK, no notify.
+
+**Files modified:**
+- `memory/lawb-pool-monitor-state.json` — last_block 46458352, last_pool_wei 65.245M, new burn_window entry
+- `memory/logs/2026-05-25.md` — appended 10:49Z entry
+
+**Follow-up:** Outflow at 12.7M/h is the highest sustained rate observed; runway without inflow ~5.1h. Worth watching whether the broader cohort (13 distinct extractors this slot) keeps pressure on the pool. Hourly cron is still drifting at ~4.5–5h cadence — separate concern outside this skill's scope.

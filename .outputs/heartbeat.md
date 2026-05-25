@@ -1,19 +1,8 @@
-HEARTBEAT_DEGRADED · STATUS_PAGE=DEGRADED
+HEARTBEAT_OK · STATUS_PAGE=WATCH
 
 ## Summary
-
-Ran the heartbeat skill at 2026-05-24 20:13 UTC.
-
-**Findings:**
-- **P0 chronic-failure flag:** `heartbeat` success_rate = 0.4 (2/5 runs). Most recent run succeeded at 16:51Z, `consecutive_failures=0`, but cumulative rate still under 0.5 with `total_runs >= 5`.
-- `lawb-pool-monitor` recovered (success at 18:59Z, success_rate 0.58, consecutive_failures 0).
-- P1/P2/P3: clean. No open PRs, no flagged MEMORY items, both enabled skills within interval.
-- Self-check: heartbeat last_success ~3.4h ago, trustable.
-
-**Notification:** Skipped — heartbeat reliability already notified at 16:50Z log entry within the 48h dedup window.
-
-**Files modified:**
-- `docs/status.md` — regenerated, 🔴 DEGRADED verdict
-- `memory/logs/2026-05-24.md` — appended heartbeat (20:13Z) entry
-
-**Follow-up:** Next heartbeat at 08:00Z 2026-05-25. A success will lift success_rate to 0.5 and clear the flag; a failure should escalate to `skill-repair`.
+- **Verdict**: P0/P1/P2 clean. One P3 flag — heartbeat last_success was ~25h ago (>2× its 8h interval), so today's 08:00Z and 14:00Z slots were missed. Overall 🟡 WATCH.
+- **Notification**: skipped (the schedule-drift concern was already logged in yesterday's 16:50Z and 20:13Z heartbeat entries — 48h dedup window applies).
+- **Status page**: rewrote `docs/status.md` with verdict 🟡 WATCH, current skill table from `memory/cron-state.json`, next-run = lawb-pool-monitor at 22:00 UTC. Token pulse section omitted (no `articles/token-report-*.md` files exist).
+- **Log**: appended a `heartbeat (21:19Z)` entry to `memory/logs/2026-05-25.md`.
+- **Follow-up**: if the 08:00Z heartbeat fires on schedule, success_rate climbs to 4/7 ≈ 0.57 and the chronic reliability concern is fully clear. If it misses again, escalate to `skill-repair`.

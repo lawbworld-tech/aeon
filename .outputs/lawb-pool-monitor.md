@@ -1,15 +1,20 @@
-## Summary
+🎣 LAWB Pool Monitor — 🚨 CRITICAL
 
-Ran lawb-pool-monitor at 2026-05-26T01:33:39Z. **No notification sent** — all conditions clear (POOL_MONITOR_OK).
+Pool: 5,000 LAWB (Δ-59.29M since 01:33Z — drained to MIN_PRICE)
+ShopVault: 0 LAWB (still swept) ✓
+Paused: false ✓
+Burn (24h): 91.9M LAWB
 
-- **Pool**: 59.295M LAWB — flat for the 6th consecutive read (~11h39m of dormancy)
-- **ShopVault**: 0 LAWB ✓
-- **Paused**: false ✓
-- **Burn (24h)**: +38.84M LAWB/24h (below 100M threshold)
-- **Events scanned**: 5,418 blocks (46479496 → 46484913) — zero Redeemed events, zero events of any kind
+Activity (4h16m since last run, all clustered in a 19m window 05:01:35Z → 05:20:27Z):
+• 18 redeems · 55.35M LAWB out · 13 unique wallets
+• 11 wallets each pulled exactly 5,000,000 LAWB in a 32-second burst (blocks 46491174–46491190, 05:01:35Z → 05:02:07Z) — looks like MAX_PRICE; bots swarmed the moment liquidity allowed
+• Followed by 2 more 5M redeems at 05:05Z, then 6 small 43.75K redeems by 0xc34cb3…4804 at 05:17Z and one 89,999.998K LAWB redeem by 0x32815a…3d91 at 05:20Z
+• After the burst, pool sits at exactly MIN_PRICE (5,000 LAWB) — next redeem will revert PoolDeplete
 
-Files modified:
-- `memory/lawb-pool-monitor-state.json` — updated last_block, last_run, burn_window_24h (aged 2 samples, appended 1)
-- `memory/logs/2026-05-26.md` — created with run log
+Alerts:
+🚨 CRITICAL_LOW_POOL — prizePool 5K LAWB < 1M threshold (fresh)
+⚠️ LOW_POOL — prizePool 5K LAWB < 10M threshold (fresh)
 
-Follow-up (recurring): `skills/lawb-pool-monitor/SKILL.md` curl-example block still lists reverting selectors `0xeb1edd61` / `0x2dfdf0b5` instead of the working `0x719ce73e` / `0x29c2aa0a`. Flagged in five prior runs, still unfixed.
+Operator action: fundPool to restore prize liquidity. shopVault is already 0, so no sweep available.
+
+https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events

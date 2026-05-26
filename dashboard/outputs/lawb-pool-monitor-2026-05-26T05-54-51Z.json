@@ -1,0 +1,207 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "🎣 LAWB Pool Monitor — 🚨 CRITICAL"
+      },
+      "children": [
+        "pool-section",
+        "sep1",
+        "activity-section",
+        "sep2",
+        "alerts-section",
+        "sep3",
+        "action-section"
+      ]
+    },
+    "pool-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "pool-stat",
+        "shopvault-line",
+        "paused-line",
+        "burn-stat"
+      ]
+    },
+    "pool-stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool",
+        "value": "5,000 LAWB",
+        "delta": "-59.29M since 01:33Z — drained to MIN_PRICE",
+        "trend": "down"
+      }
+    },
+    "shopvault-line": {
+      "type": "Text",
+      "props": {
+        "text": "ShopVault: 0 LAWB (still swept) ✓",
+        "variant": "body"
+      }
+    },
+    "paused-line": {
+      "type": "Text",
+      "props": {
+        "text": "Paused: false ✓",
+        "variant": "body"
+      }
+    },
+    "burn-stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Burn (24h)",
+        "value": "91.9M LAWB"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "activity-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "activity-heading",
+        "activity-context",
+        "bullet1",
+        "bullet2",
+        "bullet3",
+        "bullet4",
+        "basescan-link"
+      ]
+    },
+    "activity-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Activity",
+        "level": "h3"
+      }
+    },
+    "activity-context": {
+      "type": "Text",
+      "props": {
+        "text": "4h16m since last run, all clustered in a 19m window 05:01:35Z → 05:20:27Z",
+        "variant": "caption"
+      }
+    },
+    "bullet1": {
+      "type": "Text",
+      "props": {
+        "text": "• 18 redeems · 55.35M LAWB out · 13 unique wallets",
+        "variant": "body"
+      }
+    },
+    "bullet2": {
+      "type": "Text",
+      "props": {
+        "text": "• 11 wallets each pulled exactly 5,000,000 LAWB in a 32-second burst (blocks 46491174–46491190, 05:01:35Z → 05:02:07Z) — looks like MAX_PRICE; bots swarmed the moment liquidity allowed",
+        "variant": "body"
+      }
+    },
+    "bullet3": {
+      "type": "Text",
+      "props": {
+        "text": "• Followed by 2 more 5M redeems at 05:05Z, then 6 small 43.75K redeems by 0xc34cb3…4804 at 05:17Z and one 89,999.998K LAWB redeem by 0x32815a…3d91 at 05:20Z",
+        "variant": "body"
+      }
+    },
+    "bullet4": {
+      "type": "Text",
+      "props": {
+        "text": "• After the burst, pool sits at exactly MIN_PRICE (5,000 LAWB) — next redeem will revert PoolDeplete",
+        "variant": "body"
+      }
+    },
+    "basescan-link": {
+      "type": "Link",
+      "props": {
+        "label": "View on Basescan",
+        "href": "https://basescan.org/address/0x48b2db9E89542Baa217bf8dc6269164b7887fE57#events"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "alerts-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "alerts-heading",
+        "critical-alert",
+        "warning-alert"
+      ]
+    },
+    "alerts-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Alerts",
+        "level": "h3"
+      }
+    },
+    "critical-alert": {
+      "type": "Alert",
+      "props": {
+        "title": "🚨 CRITICAL_LOW_POOL",
+        "message": "prizePool 5K LAWB < 1M threshold (fresh)",
+        "type": "error"
+      }
+    },
+    "warning-alert": {
+      "type": "Alert",
+      "props": {
+        "title": "⚠️ LOW_POOL",
+        "message": "prizePool 5K LAWB < 10M threshold (fresh)",
+        "type": "warning"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "action-section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "action-heading",
+        "action-text"
+      ]
+    },
+    "action-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Operator Action",
+        "level": "h3"
+      }
+    },
+    "action-text": {
+      "type": "Text",
+      "props": {
+        "text": "fundPool to restore prize liquidity. shopVault is already 0, so no sweep available.",
+        "variant": "body"
+      }
+    }
+  }
+}

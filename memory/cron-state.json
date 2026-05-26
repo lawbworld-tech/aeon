@@ -1,13 +1,13 @@
 {
   "lawb-pool-monitor": {
-    "last_status": "failed",
+    "last_status": "dispatched",
     "last_success": "2026-05-26T05:55:30Z",
     "total_runs": 25,
     "total_successes": 19,
     "total_failures": 6,
     "consecutive_failures": 1,
     "success_rate": 0.76,
-    "last_dispatch": "2026-05-26T09:29:16Z",
+    "last_dispatch": "2026-05-26T16:27:55Z",
     "last_failed": "2026-05-26T09:32:32Z",
     "last_error": "759ab78815538d00000', 16)); print(int('0x5759ab78815538d00000', 16)/1e18); print(int('0x2c5859f',16)); print(int('0x2c5859f',16)-46492622); print(hex(46492623))\\\"\",\"description\":\"Decode hex contract v"
   },

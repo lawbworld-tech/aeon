@@ -1,14 +1,14 @@
 {
   "lawb-pool-monitor": {
-    "last_status": "dispatched",
+    "last_status": "failed",
     "last_success": "2026-05-26T05:55:30Z",
-    "total_runs": 928,
+    "total_runs": 929,
     "total_successes": 19,
-    "total_failures": 909,
-    "consecutive_failures": 904,
+    "total_failures": 910,
+    "consecutive_failures": 905,
     "success_rate": 0.02,
     "last_dispatch": "2026-08-01T02:43:31Z",
-    "last_failed": "2026-08-01T01:45:22Z",
+    "last_failed": "2026-08-01T02:46:52Z",
     "last_error": "service_tier\":\"standard\",\"cache_creation\":{\"ephemeral_1h_input_tokens\":0,\"ephemeral_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\"},\"modelUsage\":{},\"permission_denials\":[],\""
   },
   "heartbeat": {
